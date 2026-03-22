@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swarm Intelligence - Join the Hive!</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .glow { animation: glow 2s ease-in-out infinite alternate; }
+        @keyframes glow { from {box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0ff;}
+                          to {box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0ff;} }
+        .float { animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0% {transform: translateY(0px);}
+                          50% {transform: translateY(-20px);}
+                          100% {transform: translateY(0px);} }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto px-4 py-8">
+        <div class="text-center mb-12">
+            <h1 class="text-6xl font-bold mb-4 glow">Swarm Intelligence</h1>
+            <p class="text-xl text-blue-400">Join thousands of others in the collective intelligence revolution</p>
+        </div>
+
+        <!-- Viral Social Features -->
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <!-- Live Activity Feed -->
+            <div class="bg-gray-800 rounded-lg p-6 shadow-xl">
+                <h2 class="text-2xl font-bold mb-4">🔥 Live Swarm Activity</h2>
+                <div class="space-y-4" id="activity-feed">
+                    <div class="flex items-center justify-between py-2 border-b border-gray-700">
+                        <div class="flex items-center">
+                            <img src="https://api.dicebear.com/6.x/avataaars/svg?seed=Alice" class="w-10 h-10 rounded-full">
+                            <span class="ml-3">Alice just solved a complex problem!</span>
+                        </div>
+                        <span class="text-green-400">+250 pts</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Leaderboard -->
+            <div class="bg-gray-800 rounded-lg p-6 shadow-xl">
+                <h2 class="text-2xl font-bold mb-4">🏆 Top Contributors</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between py-2">
+                        <div class="flex items-center">
+                            <span class="text-2xl text-yellow-400 mr-4">1</span>
+                            <img src="https://api.dicebear.com/6.x/avataaars/svg?seed=John" class="w-10 h-10 rounded-full">
+                            <span class="ml-3">SwarmMaster_John</span>
+                        </div>
+                        <span class="text-2xl font-bold">12,450</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievement System -->
+        <div class="bg-gray-800 rounded-lg p-6 mb-12">
+            <h2 class="text-2xl font-bold mb-6">🌟 Your Achievements</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="achievement bg-gray-700 rounded-lg p-4 text-center cursor-pointer hover:bg-gray-600 transition-all float">
+                    <div class="text-4xl mb-2">🎯</div>
+                    <h3 class="font-bold">First Solution</h3>
+                    <p class="text-sm text-gray-400">Contribute your first solution</p>
+                </div>
+                <div class="achievement bg-gray-700 rounded-lg p-4 text-center cursor-pointer hover:bg-gray-600 transition-all float">
+                    <div class="text-4xl mb-2">🚀</div>
+                    <h3 class="font-bold">Rising Star</h3>
+                    <p class="text-sm text-gray-400">Reach 1000 points</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Challenge System -->
+        <div class="bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-6">🎯 Daily Challenges</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-blue-900 rounded-lg p-4 cursor-pointer hover:bg-blue-800 transition-all">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-xl font-bold">Beginner Challenge</span>
+                        <span class="bg-blue-500 px-3 py-1 rounded-full text-sm">500 pts</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">Solve 3 basic swarm problems</p>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-blue-500 rounded-full h-2 w-1/3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulated real-time activity feed
+        const activities = [
+            'Bob discovered a new solution pattern!',
+            'Elena optimized the swarm behavior by 25%!',
+            'Carlos achieved a new personal best!'
+        ];
+
+        setInterval(() => {
+            const feed = document.getElementById('activity-feed');
+            const activity = activities[Math.floor(Math.random() * activities.length)];
+            const points = Math.floor(Math.random() * 500);
+            const avatar = `https://api.dicebear.com/6.x/avataaars/svg?seed=${Math.random()}`;
+
+            const div = document.createElement('div');
+            div.className = 'flex items-center justify-between py-2 border-b border-gray-700';
+            div.innerHTML = `
+                <div class="flex items-center">
+                    <img src="${avatar}" class="w-10 h-10 rounded-full">
+                    <span class="ml-3">${activity}</span>
+                </div>
+                <span class="text-green-400">+${points} pts</span>
+            `;
+
+            feed.insertBefore(div, feed.firstChild);
+            if (feed.children.length > 5) feed.removeChild(feed.lastChild);
+        }, 3000);
+    </script>
+</body>
+</html>
